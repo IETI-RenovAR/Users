@@ -54,8 +54,13 @@ http://localhost:8080/health
 ![image](https://github.com/user-attachments/assets/e0f8ef96-6b97-4a10-8844-6edc61f72f81)
 
 - **Con** necesidad de configurar la variable de entorno.
-![image](https://github.com/user-attachments/assets/dacb0fc9-4193-4f83-9f57-3a18a7752a58)
+    - Petición Post
 ![image](https://github.com/user-attachments/assets/f13f9440-058d-43b7-a344-f0cf486f88ba)
+
+    - Petición Get general.
+![image](https://github.com/user-attachments/assets/d8f07ccc-a02a-4c44-a524-c8e065707753)
+
+    - Petición Get de usuario específico.
 ![image](https://github.com/user-attachments/assets/bb545bcc-3675-4e53-8248-47f2f610ffdf)
 
 ## Enlace al Documento de Planeación
