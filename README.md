@@ -17,18 +17,54 @@ Roomify es una aplicación que revoluciona la remodelación de espacios mediante
 - `spring-boot-starter-test` (para pruebas)  
 
 ## Instalación y Ejecución
-1. Clona el repositorio:  
-   ```sh
-   git clone https://github.com/IETI-PixelMinds/Back.git
-   ```
-   
+
+1. Clone el repositorio en su máquina local usando Git.
+
+```
+git clone https://github.com/IETI-PixelMinds/Back.git
+```
+
+2. Navegue hasta el directorio del proyecto.
+
+```
+cd Back
+```
+
+3. Compile el proyecto usando maven con el siguiente comando:
+
+```
+mvn clean install
+```
+
+4. Ejecute el proyecto con el siguiente comando:
+
+```
+mvn exec:java -Dexec.mainClass="org.adaschool.project.ProjectApplication"
+```
+
+5. Una vez el servidor se esté ejecutando ingrese a la siguiente URL usando un navegador web:
+
+```
+http://localhost:8080/health
+```
+
+## Demostración Endpoints
+
+- **Sin** necesidad de configurar la variable de entorno.
+![image](https://github.com/user-attachments/assets/e0f8ef96-6b97-4a10-8844-6edc61f72f81)
+
+- **Con** necesidad de configurar la variable de entorno.
+![image](https://github.com/user-attachments/assets/dacb0fc9-4193-4f83-9f57-3a18a7752a58)
+![image](https://github.com/user-attachments/assets/f13f9440-058d-43b7-a344-f0cf486f88ba)
+![image](https://github.com/user-attachments/assets/bb545bcc-3675-4e53-8248-47f2f610ffdf)
+
 ## Enlace al Documento de Planeación
 📌
 
 ## Authors
 - Ana Maria Duran
 - Johan Estrada
-- Samuel Rojas
-- Mauricio Monroy
 - Juan David Contreras
 - Laura Natalia Rojas
+- Mauricio Monroy
+- Samuel Rojas
