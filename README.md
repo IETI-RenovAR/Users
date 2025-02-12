@@ -63,8 +63,11 @@ http://localhost:8080/health
     - Petición Get de usuario específico.
 ![image](https://github.com/user-attachments/assets/bb545bcc-3675-4e53-8248-47f2f610ffdf)
 
+## Enlace al Documento de Requerimientos
+📌 https://annotion.notion.site/Proyecto-Semestre-MVP-198c7898f81980d88f5ac780630baf8b?pvs=4
+
 ## Enlace al Documento de Planeación
-📌
+
 
 ## Authors
 - Ana Maria Duran
