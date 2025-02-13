@@ -67,7 +67,7 @@ http://localhost:8080/health
 📌 https://annotion.notion.site/Proyecto-Semestre-MVP-198c7898f81980d88f5ac780630baf8b?pvs=4
 
 ## Enlace al Documento de Planeación
-
+📌 https://dev.azure.com/IETIPixelMinds/Pixel%20Minds/_backlogs/backlog/Pixel%20Minds%20Team/Epics
 
 ## Authors
 - Ana Maria Duran
