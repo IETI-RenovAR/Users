@@ -14,16 +14,18 @@ public class User {
     private String lastName;
     private String email;
     private String password;
+    private String userType; // "carpintero/tienda"
 
     public User(){
     }
 
-    public User(String id, String name, String lastName, String email, String password) {
+    public User(String id, String name, String lastName, String email, String password, String userType) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.email = email;
         this.password = new BCryptPasswordEncoder().encode(password);
+        this.userType = userType;
     }
 
     public User(UserDTO userDTO){
@@ -32,8 +34,10 @@ public class User {
         this.lastName = userDTO.getLastName();
         this.email = userDTO.getEmail();
         this.password = new BCryptPasswordEncoder().encode(userDTO.getPassword());
+        this.userType = userDTO.getUserType();
     }
 
+    // Getters y Setters
     public String getId(){
         return id;
     }
@@ -70,10 +74,19 @@ public class User {
         this.password = password;
     }
 
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
+
     public void update(UserDTO userDTO){
         this.name = userDTO.getName();
         this.lastName = userDTO.getLastName();
         this.email = userDTO.getEmail();
         this.password = new BCryptPasswordEncoder().encode(userDTO.getPassword());
+        this.userType = userDTO.getUserType();
     }
 }
