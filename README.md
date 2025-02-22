@@ -1,4 +1,4 @@
-# Roomify - Backend
+# RenovAR - Backend
 
 ## Descripción del Proyecto
 Roomify es una aplicación que revoluciona la remodelación de espacios mediante Inteligencia Artificial y Realidad Aumentada. Este repositorio contiene el backend del proyecto, desarrollado con Spring Boot, que gestiona la autenticación, almacenamiento de datos y comunicación con la base de datos.
