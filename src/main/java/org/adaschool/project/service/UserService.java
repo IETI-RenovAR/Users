@@ -130,7 +130,7 @@ public class UserService {
         HttpClient client = HttpClient.newHttpClient();
         String requestBody = objectMapper.writeValueAsString(design);
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://10.0.0.5/v1/designs"))
+                .uri(URI.create("http://10.0.0.5:8080/v1/designs"))
                 .header("Content-Type", "application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(requestBody, StandardCharsets.UTF_8))
                 .build();
@@ -145,7 +145,7 @@ public class UserService {
         HttpClient client = HttpClient.newHttpClient();
         String requestBody = objectMapper.writeValueAsString(quotationDTO);
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://10.0.0.5/v1/designs/" + idQuotation + "/quotations"))
+                .uri(URI.create("http://10.0.0.5:8080/v1/designs/" + idQuotation + "/quotations"))
                 .header("Content-Type", "application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(requestBody, StandardCharsets.UTF_8))
                 .build();
@@ -162,7 +162,7 @@ public class UserService {
         HttpClient client = HttpClient.newHttpClient();
         String requestBody = objectMapper.writeValueAsString(designDTO);
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://10.0.0.5/v1/designs/" + idDesign))
+                .uri(URI.create("http://10.0.0.5:8080/v1/designs/" + idDesign))
                 .header("Content-Type", "application/json")
                 .PUT(HttpRequest.BodyPublishers.ofString(requestBody, StandardCharsets.UTF_8))
                 .build();
@@ -177,7 +177,7 @@ public class UserService {
         HttpClient client = HttpClient.newHttpClient();
         String requestBody = objectMapper.writeValueAsString(quotationDTO);
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://10.0.0.5/v1/designs/quotations/" + quotationId))
+                .uri(URI.create("http://10.0.0.5:8080/v1/designs/quotations/" + quotationId))
                 .header("Content-Type", "application/json")
                 .PUT(HttpRequest.BodyPublishers.ofString(requestBody, StandardCharsets.UTF_8))
                 .build();
@@ -193,7 +193,7 @@ public class UserService {
     public void deleteDesign(String idDesign) throws Exception{
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://10.0.0.5/v1/designs/" + idDesign))
+                .uri(URI.create("http://10.0.0.5:8080/v1/designs/" + idDesign))
                 .DELETE()
                 .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -205,7 +205,7 @@ public class UserService {
     public void deleteQuotation(String idQuotation) throws Exception{
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://10.0.0.5/v1/designs/quotations" + idQuotation))
+                .uri(URI.create("http://10.0.0.5:8080/v1/designs/quotations" + idQuotation))
                 .DELETE()
                 .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -293,12 +293,12 @@ public class UserService {
         HttpClient client = HttpClient.newHttpClient();
         String requestBody = objectMapper.writeValueAsString(productDTO);
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://10.0.0.2/v1/products"))
+                .uri(URI.create("http://10.0.0.2:8080/v1/products"))
                 .header("Content-Type", "application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(requestBody, StandardCharsets.UTF_8))
                 .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        if(response.statusCode() != 200){
+        if(response.statusCode() >= 300){
             throw new Exception();
         }
         return objectMapper.readValue(response.body(), Product.class);
@@ -310,7 +310,7 @@ public class UserService {
         HttpClient client = HttpClient.newHttpClient();
         String requestBody = objectMapper.writeValueAsString(productDTO);
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://10.0.0.2/v1/products/" + idProduct))
+                .uri(URI.create("http://10.0.0.2:8080/v1/products/" + idProduct))
                 .header("Content-Type", "application/json")
                 .PUT(HttpRequest.BodyPublishers.ofString(requestBody, StandardCharsets.UTF_8))
                 .build();
@@ -326,7 +326,7 @@ public class UserService {
     public void deleteProduct(String idProduct) throws Exception{
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://10.0.0.2/v1/products/" + idProduct))
+                .uri(URI.create("http://10.0.0.2:8080/v1/products/" + idProduct))
                 .DELETE()
                 .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -370,12 +370,12 @@ public class UserService {
         HttpClient client = HttpClient.newHttpClient();
         String requestBody = objectMapper.writeValueAsString(purchaseDTO);
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://10.0.0.3/v1/purchases"))
+                .uri(URI.create("http://10.0.0.3:8080/v1/purchases"))
                 .header("Content-Type", "application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(requestBody, StandardCharsets.UTF_8))
                 .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        if(response.statusCode() != 200){
+        if(response.statusCode() >= 300){
             throw new Exception();
         }
         return objectMapper.readValue(response.body(), Purchase.class);
@@ -386,7 +386,7 @@ public class UserService {
     public void deletePurchase(String idPurchase) throws Exception {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://10.0.0.3/v1/purchases/" + idPurchase))
+                .uri(URI.create("http://10.0.0.3:8080/v1/purchases/" + idPurchase))
                 .DELETE()
                 .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
