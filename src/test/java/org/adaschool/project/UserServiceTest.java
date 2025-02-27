@@ -17,7 +17,7 @@ import org.mockito.MockitoAnnotations;
 
 import java.util.Optional;
 
-public class ProductServiceTest {
+public class UserServiceTest {
     @Mock
     private UserRepository userRepository;
 
