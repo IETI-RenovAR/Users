@@ -64,13 +64,19 @@ public class UserService {
     // GET Requests
 
     public List<Design> getAllPublicDesigns() throws Exception{
+        System.out.println(1);
         HttpClient client = HttpClient.newHttpClient();
+        System.out.println(2);
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("http://10.0.0.5:8080/v1/designs"))
                 .GET()
                 .build();
+        System.out.println(3);
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        System.out.println(4);
         ObjectMapper objectMapper = new ObjectMapper();
+        System.out.println(5); 
+        System.out.println(response.body().toString());
         return objectMapper.readValue(response.body(), new TypeReference<List<Design>>() {});
     }
 
@@ -197,7 +203,7 @@ public class UserService {
                 .DELETE()
                 .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        if(response.statusCode() != 200){
+        if(response.statusCode() > 300){
             throw new Exception();
         }
     }
@@ -330,7 +336,7 @@ public class UserService {
                 .DELETE()
                 .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        if(response.statusCode() != 200){
+        if(response.statusCode() > 300){
             throw new Exception();
         }
     }

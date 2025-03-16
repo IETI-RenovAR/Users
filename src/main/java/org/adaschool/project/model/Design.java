@@ -3,6 +3,8 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 @Setter
@@ -13,6 +15,7 @@ public class Design {
     private String userId;
     private String name;
     private String url;
+    @JsonProperty("isPublic")
     private boolean isPublic;
     private String state;
     private boolean searchingCarpenter;

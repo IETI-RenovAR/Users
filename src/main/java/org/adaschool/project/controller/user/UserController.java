@@ -58,7 +58,7 @@ public class UserController {
 
     // Products
 
-    @GetMapping("/product")
+    @GetMapping("/products")
     public ResponseEntity<List<Product>> getAllProducts(){
         try {
             return ResponseEntity.ok(userService.getAllProducts());
@@ -138,22 +138,24 @@ public class UserController {
             userService.deleteProduct(productId);
             return ResponseEntity.ok().build();
         } catch (Exception e) {
+            System.out.println(e);
             return ResponseEntity.badRequest().build();
         }
     }
 
     // Designs
 
-    @GetMapping("/designs")
+    @GetMapping("/designs")  //revisar
     public ResponseEntity<List<Design>> getAllPublicDesigns(){
         try {
             return ResponseEntity.ok(userService.getAllPublicDesigns());
         } catch (Exception e) {
+            System.out.println(e);
             return ResponseEntity.badRequest().build();
         }
     }
 
-    @GetMapping("/designs/{idDesign}")
+    @GetMapping("/designs/{idDesign}") //revisar
     public ResponseEntity<Design> getDesignById(@PathVariable("idDesign") String idDesign){
         try {
             return ResponseEntity.ok(userService.getDesignById(idDesign));
@@ -162,16 +164,17 @@ public class UserController {
         }
     }
 
-    @GetMapping("/designs/users/{userId}")
+    @GetMapping("/designs/user/{userId}") 
     public ResponseEntity<List<Design>> getDesignsOfUser(@PathVariable("userId") String userId) throws Exception {
         return ResponseEntity.ok(userService.getDesignsOfUser(userId));
     }
 
-    @GetMapping("/designs/{idDesign}/quotations")
+    @GetMapping("/designs/{idDesign}/quotations") //por probar
     public ResponseEntity<List<Quotation>> getAllQuotations(String idDesign){
         try {
             return ResponseEntity.ok(userService.getAllQuotations(idDesign));
         } catch (Exception e) {
+            System.out.println(e);
             return ResponseEntity.badRequest().build();
         }
     }
@@ -241,7 +244,7 @@ public class UserController {
         return ResponseEntity.ok(userService.getPurchaseById(purchaseId));
     }
 
-    @PostMapping("/purchases")
+    @PostMapping("/purchases")                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
     public ResponseEntity<Purchase> createPurchase(@RequestBody PurchaseDTO purchaseDTO) throws Exception {
         return ResponseEntity.ok(userService.createPurchase(purchaseDTO));
     }
