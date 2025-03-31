@@ -3,7 +3,7 @@ package org.adaschool.project;
 import org.adaschool.project.controller.user.UserController;
 import org.adaschool.project.dto.UserDTO;
 import org.adaschool.project.exception.UserNotFoundException;
-import org.adaschool.project.model.User;
+import org.adaschool.project.model.UserEntity;
 import org.adaschool.project.service.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-class UserControllerTest {
+class UserEntityControllerTest {
 	@Mock
 	private UserService userService;
 
@@ -35,28 +35,28 @@ class UserControllerTest {
 	@Test
 	public void testCreateUser() {
 		UserDTO userDTO = new UserDTO("IETI", "PROYECTO", "renovar@eci.com", "remodelaciones");
-		User createdUser = new User("1", "IETI", "PROYECTO", "renovar@eci.com", "remodelacionesEncode");
+		UserEntity createdUserEntity = new UserEntity("1", "IETI", "PROYECTO", "renovar@eci.com", "remodelacionesEncode");
 
-		when(userService.saveUser(any(UserDTO.class))).thenReturn(createdUser);
+		when(userService.saveUser(any(UserDTO.class))).thenReturn(createdUserEntity);
 
-		ResponseEntity<User> response = userController.createUser(userDTO);
+		ResponseEntity<UserEntity> response = userController.createUser(userDTO);
 
 		assertEquals(HttpStatus.CREATED, response.getStatusCode());
 		assertEquals(URI.create("/v1/users/1"), response.getHeaders().getLocation());
-		assertEquals(createdUser, response.getBody());
+		assertEquals(createdUserEntity, response.getBody());
 	}
 
 	@Test
 	public void testGetUserById() {
 		String userId = "1";
-		User user = new User(userId, "IETI", "PROYECTO", "renovar@eci.com", "remodelacionesEncode");
+		UserEntity userEntity = new UserEntity(userId, "IETI", "PROYECTO", "renovar@eci.com", "remodelacionesEncode");
 
-		when(userService.getUserById(userId)).thenReturn(user);
+		when(userService.getUserById(userId)).thenReturn(userEntity);
 
-		ResponseEntity<User> response = userController.findById(userId);
+		ResponseEntity<UserEntity> response = userController.findById(userId);
 
 		assertEquals(HttpStatus.OK, response.getStatusCode());
-		assertEquals(user, response.getBody());
+		assertEquals(userEntity, response.getBody());
 	}
 
 	@Test
@@ -73,14 +73,14 @@ class UserControllerTest {
 	public void testUpdateUser() {
 		String userId = "1";
 		UserDTO userDTO = new UserDTO("IETIa", "PROYECTO", "renovarmal@eci.com", "newremodelaciones");
-		User updatedUser = new User(userId, "IETIa", "PROYECTO", "renovarmal@eci.com", "remodelacionesEncode");
+		UserEntity updatedUserEntity = new UserEntity(userId, "IETIa", "PROYECTO", "renovarmal@eci.com", "remodelacionesEncode");
 
-		when(userService.updateUser(userId, userDTO)).thenReturn(updatedUser);
+		when(userService.updateUser(userId, userDTO)).thenReturn(updatedUserEntity);
 
-		ResponseEntity<User> response = userController.updateUser(userId, userDTO);
+		ResponseEntity<UserEntity> response = userController.updateUser(userId, userDTO);
 
 		assertEquals(HttpStatus.OK, response.getStatusCode());
-		assertEquals(updatedUser, response.getBody());
+		assertEquals(updatedUserEntity, response.getBody());
 	}
 
 	@Test

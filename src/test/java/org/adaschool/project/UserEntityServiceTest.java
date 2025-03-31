@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.adaschool.project.dto.UserDTO;
 import org.adaschool.project.exception.UserNotFoundException;
-import org.adaschool.project.model.User;
+import org.adaschool.project.model.UserEntity;
 import org.adaschool.project.repository.UserRepository;
 import org.adaschool.project.service.UserService;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,7 +17,7 @@ import org.mockito.MockitoAnnotations;
 
 import java.util.Optional;
 
-public class UserServiceTest {
+public class UserEntityServiceTest {
     @Mock
     private UserRepository userRepository;
 
@@ -33,30 +33,30 @@ public class UserServiceTest {
     @Test
     void testSaveUser() {
         UserDTO userDTO = new UserDTO("IETI", "PROYECTO", "renovar@eci.com", "remodelaciones");
-        User expectedUser = new User(userDTO);
-        when(userRepository.save(any(User.class))).thenReturn(expectedUser);
+        UserEntity expectedUserEntity = new UserEntity(userDTO);
+        when(userRepository.save(any(UserEntity.class))).thenReturn(expectedUserEntity);
 
-        User savedUser = userService.saveUser(userDTO);
+        UserEntity savedUserEntity = userService.saveUser(userDTO);
 
-        assertEquals(expectedUser.getName(), savedUser.getName());
-        assertEquals(expectedUser.getLastName(), savedUser.getLastName());
-        assertEquals(expectedUser.getEmail(), savedUser.getEmail());
-        verify(userRepository, times(1)).save(any(User.class));
+        assertEquals(expectedUserEntity.getName(), savedUserEntity.getName());
+        assertEquals(expectedUserEntity.getLastName(), savedUserEntity.getLastName());
+        assertEquals(expectedUserEntity.getEmail(), savedUserEntity.getEmail());
+        verify(userRepository, times(1)).save(any(UserEntity.class));
     }
 
     // Obtener un usuario por ID y validar que la respuesta es correcta
     @Test
     void testGetUserById() {
         String userId = "12345";
-        User expectedUser = new User(userId, "IETI", "PROYECTO", "renovar@eci.com", "remodelaciones");
-        when(userRepository.findById(userId)).thenReturn(Optional.of(expectedUser));
+        UserEntity expectedUserEntity = new UserEntity(userId, "IETI", "PROYECTO", "renovar@eci.com", "remodelaciones");
+        when(userRepository.findById(userId)).thenReturn(Optional.of(expectedUserEntity));
 
-        User foundUser = userService.getUserById(userId);
+        UserEntity foundUserEntity = userService.getUserById(userId);
 
-        assertEquals(expectedUser.getId(), foundUser.getId());
-        assertEquals(expectedUser.getName(), foundUser.getName());
-        assertEquals(expectedUser.getLastName(), foundUser.getLastName());
-        assertEquals(expectedUser.getEmail(), foundUser.getEmail());
+        assertEquals(expectedUserEntity.getId(), foundUserEntity.getId());
+        assertEquals(expectedUserEntity.getName(), foundUserEntity.getName());
+        assertEquals(expectedUserEntity.getLastName(), foundUserEntity.getLastName());
+        assertEquals(expectedUserEntity.getEmail(), foundUserEntity.getEmail());
         verify(userRepository, times(1)).findById(userId);
     }
 
@@ -71,6 +71,6 @@ public class UserServiceTest {
             userService.updateUser(userId, userDTO);
         });
         verify(userRepository, times(1)).findById(userId);
-        verify(userRepository, never()).save(any(User.class));
+        verify(userRepository, never()).save(any(UserEntity.class));
     }
 }

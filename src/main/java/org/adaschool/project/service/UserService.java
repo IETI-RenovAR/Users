@@ -29,29 +29,33 @@ public class UserService {
 
     // User
 
-    public List<User> getAllUsers(){
+    public List<UserEntity> getAllUsers(){
         return new ArrayList<>(userRepository.findAll());
     }
 
-    public User getUserById(String id){
-        Optional<User> user = userRepository.findById(id);
+    public UserEntity getUserById(String id){
+        Optional<UserEntity> user = userRepository.findById(id);
         if(user.isPresent()) return user.get();
         throw new UserNotFoundException(id);
     }
 
-    public User saveUser(UserDTO userDTO){
-        User newUser = new User(userDTO);
-        userRepository.save(newUser);
-        return newUser;
+    public Optional<UserEntity> getUserByEmail(String email){
+        return userRepository.findByEmail(email);
     }
 
-    public User updateUser(String id, UserDTO userDTO){
-        Optional<User> user = userRepository.findById(id);
+    public UserEntity saveUser(UserDTO userDTO){
+        UserEntity newUserEntity = new UserEntity(userDTO);
+        userRepository.save(newUserEntity);
+        return newUserEntity;
+    }
+
+    public UserEntity updateUser(String id, UserDTO userDTO){
+        Optional<UserEntity> user = userRepository.findById(id);
         if(user.isEmpty()) throw new UserNotFoundException(id);
-        User updateUser = user.get();
-        updateUser.update(userDTO);
-        userRepository.save(updateUser);
-        return updateUser;
+        UserEntity updateUserEntity = user.get();
+        updateUserEntity.update(userDTO);
+        userRepository.save(updateUserEntity);
+        return updateUserEntity;
     }
 
     public void deleteUser(String id) throws UserNotFoundException{

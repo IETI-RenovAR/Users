@@ -54,13 +54,13 @@ El Servicio de Usuarios es un microservicio desarrollado en Spring Boot que 
 1. **Construye la imagen de Docker:**
     
     ```
-    docker build -t users .
+    docker build -t userEntities .
     ```
     
 2. **Ejecuta el contenedor:**
     
     ```
-    docker run -d --name users --network renovar --ip 10.0.0.x
+    docker run -d --name userEntities --network renovar --ip 10.0.0.x
     ```
     
 
@@ -71,7 +71,7 @@ El Servicio de Usuarios es un microservicio desarrollado en Spring Boot que 
 
 La documentación completa se encuentra en: http://localhost:8080/swagger-ui/index.html
   
-![image](https://github.com/user-attachments/assets/56e85cec-5b32-48d6-9d12-47bd661801cc)
+![image](https://github.com/userEntity-attachments/assets/56e85cec-5b32-48d6-9d12-47bd661801cc)
 
 
 El servicio expone los siguientes endpoints (de manera general):
@@ -80,7 +80,7 @@ El servicio expone los siguientes endpoints (de manera general):
 
 - **Crear un usuario:**
     
-    `POST /v1/users`
+    `POST /v1/userEntities`
     
     ```
     {
@@ -93,11 +93,11 @@ El servicio expone los siguientes endpoints (de manera general):
     
 - **Obtener un usuario por ID:**
     
-    `GET /v1/users/{id}`
+    `GET /v1/userEntities/{id}`
     
 - **Actualizar un usuario:**
     
-    `PUT /v1/users/{id}`
+    `PUT /v1/userEntities/{id}`
     
     ```
     {
@@ -110,7 +110,7 @@ El servicio expone los siguientes endpoints (de manera general):
     
 - **Eliminar un usuario:**
     
-    `DELETE /v1/users/{id}`
+    `DELETE /v1/userEntities/{id}`
     
 
 ---
