@@ -72,7 +72,7 @@ public class UserService {
         HttpClient client = HttpClient.newHttpClient();
         System.out.println(2);
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://10.0.0.5:8080/v1/designs"))
+                .uri(URI.create("http://localhost:8081/v1/designs"))
                 .GET()
                 .build();
         System.out.println(3);
@@ -87,7 +87,7 @@ public class UserService {
     public Design getDesignById(String idDesign) throws Exception{
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://10.0.0.5:8080/v1/designs/" + idDesign))
+                .uri(URI.create("http://localhost:8081/v1/designs/" + idDesign))
                 .GET()
                 .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -101,7 +101,7 @@ public class UserService {
     public List<Design> getDesignsOfUser(String idUser) throws Exception{
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://10.0.0.5:8080/v1/designs/users/" + idUser))
+                .uri(URI.create("http://localhost:8081/v1/designs/users/" + idUser))
                 .GET()
                 .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -112,7 +112,7 @@ public class UserService {
     public List<Quotation> getAllQuotations(String idDesign) throws Exception {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://10.0.0.5:8080/v1/designs/" + idDesign + "/quotations"))
+                .uri(URI.create("http://localhost:8081/v1/designs/" + idDesign + "/quotations"))
                 .GET()
                 .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -123,7 +123,7 @@ public class UserService {
     public Quotation getQuotationById(String quotationId) throws Exception {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://10.0.0.5:8080/v1/designs/quotations/" + quotationId))
+                .uri(URI.create("http://localhost:8081/v1/designs/quotations/" + quotationId))
                 .GET()
                 .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -140,7 +140,7 @@ public class UserService {
         HttpClient client = HttpClient.newHttpClient();
         String requestBody = objectMapper.writeValueAsString(design);
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://10.0.0.5:8080/v1/designs"))
+                .uri(URI.create("http://localhost:8081/v1/designs"))
                 .header("Content-Type", "application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(requestBody, StandardCharsets.UTF_8))
                 .build();
@@ -155,7 +155,7 @@ public class UserService {
         HttpClient client = HttpClient.newHttpClient();
         String requestBody = objectMapper.writeValueAsString(quotationDTO);
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://10.0.0.5:8080/v1/designs/" + idQuotation + "/quotations"))
+                .uri(URI.create("http://localhost:8081/v1/designs/" + idQuotation + "/quotations"))
                 .header("Content-Type", "application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(requestBody, StandardCharsets.UTF_8))
                 .build();
@@ -172,7 +172,7 @@ public class UserService {
         HttpClient client = HttpClient.newHttpClient();
         String requestBody = objectMapper.writeValueAsString(designDTO);
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://10.0.0.5:8080/v1/designs/" + idDesign))
+                .uri(URI.create("http://localhost:8081/v1/designs/" + idDesign))
                 .header("Content-Type", "application/json")
                 .PUT(HttpRequest.BodyPublishers.ofString(requestBody, StandardCharsets.UTF_8))
                 .build();
@@ -187,7 +187,7 @@ public class UserService {
         HttpClient client = HttpClient.newHttpClient();
         String requestBody = objectMapper.writeValueAsString(quotationDTO);
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://10.0.0.5:8080/v1/designs/quotations/" + quotationId))
+                .uri(URI.create("http://localhost:8081/v1/designs/quotations/" + quotationId))
                 .header("Content-Type", "application/json")
                 .PUT(HttpRequest.BodyPublishers.ofString(requestBody, StandardCharsets.UTF_8))
                 .build();
@@ -203,7 +203,7 @@ public class UserService {
     public void deleteDesign(String idDesign) throws Exception{
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://10.0.0.5:8080/v1/designs/" + idDesign))
+                .uri(URI.create("http://localhost:8081/v1/designs/" + idDesign))
                 .DELETE()
                 .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -215,7 +215,7 @@ public class UserService {
     public void deleteQuotation(String idQuotation) throws Exception{
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://10.0.0.5:8080/v1/designs/quotations" + idQuotation))
+                .uri(URI.create("http://localhost:8081/v1/designs/quotations" + idQuotation))
                 .DELETE()
                 .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -231,7 +231,7 @@ public class UserService {
     public List<Product> getAllProducts() throws Exception{
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://10.0.0.2:8080/v1/products"))
+                .uri(URI.create("http://localhost:8082/v1/products"))
                 .GET()
                 .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -242,7 +242,7 @@ public class UserService {
     public Product getProductById(String id) throws Exception{
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://10.0.0.2:8080/v1/products/" + id))
+                .uri(URI.create("http://localhost:8082/v1/products/" + id))
                 .GET()
                 .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -256,7 +256,7 @@ public class UserService {
     public Double getProductPrice(String productId) throws Exception {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://10.0.0.2:8080/v1/products/price/" + productId))
+                .uri(URI.create("http://localhost:8082/v1/products/price/" + productId))
                 .GET()
                 .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -267,7 +267,7 @@ public class UserService {
     public String getProductDimensions(String productId) throws Exception{
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://10.0.0.2:8080/v1/products/dimensions/" + productId))
+                .uri(URI.create("http://localhost:8082/v1/products/dimensions/" + productId))
                 .GET()
                 .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -278,7 +278,7 @@ public class UserService {
     public String getProductStore(String productId) throws Exception{
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://10.0.0.2:8080/v1/products/seller/" + productId))
+                .uri(URI.create("http://localhost:8082/v1/products/seller/" + productId))
                 .GET()
                 .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -289,7 +289,7 @@ public class UserService {
     public List<Product> sortProducts(String criteria, String category) throws Exception{
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://10.0.0.2:8080/v1/products/sort/" + criteria + "/" + category))
+                .uri(URI.create("http://localhost:8082/v1/products/sort/" + criteria + "/" + category))
                 .GET()
                 .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -303,7 +303,7 @@ public class UserService {
         HttpClient client = HttpClient.newHttpClient();
         String requestBody = objectMapper.writeValueAsString(productDTO);
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://10.0.0.2:8080/v1/products"))
+                .uri(URI.create("http://localhost:8082/v1/products"))
                 .header("Content-Type", "application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(requestBody, StandardCharsets.UTF_8))
                 .build();
@@ -320,7 +320,7 @@ public class UserService {
         HttpClient client = HttpClient.newHttpClient();
         String requestBody = objectMapper.writeValueAsString(productDTO);
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://10.0.0.2:8080/v1/products/" + idProduct))
+                .uri(URI.create("http://localhost:8082/v1/products/" + idProduct))
                 .header("Content-Type", "application/json")
                 .PUT(HttpRequest.BodyPublishers.ofString(requestBody, StandardCharsets.UTF_8))
                 .build();
@@ -336,7 +336,7 @@ public class UserService {
     public void deleteProduct(String idProduct) throws Exception{
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://10.0.0.2:8080/v1/products/" + idProduct))
+                .uri(URI.create("http://localhost:8082/v1/products/" + idProduct))
                 .DELETE()
                 .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -352,7 +352,7 @@ public class UserService {
     public List<Purchase> getAllPurchases() throws Exception{
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://10.0.0.3:8080/v1/purchases"))
+                .uri(URI.create("http://localhost:8083/v1/purchases"))
                 .GET()
                 .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -363,7 +363,7 @@ public class UserService {
     public Purchase getPurchaseById(String id) throws Exception{
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://10.0.0.3:8080/v1/purchases/" + id))
+                .uri(URI.create("http://localhost:8083/v1/purchases/" + id))
                 .GET()
                 .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -380,7 +380,7 @@ public class UserService {
         HttpClient client = HttpClient.newHttpClient();
         String requestBody = objectMapper.writeValueAsString(purchaseDTO);
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://10.0.0.3:8080/v1/purchases"))
+                .uri(URI.create("http://localhost:8083/v1/purchases"))
                 .header("Content-Type", "application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(requestBody, StandardCharsets.UTF_8))
                 .build();
@@ -396,7 +396,7 @@ public class UserService {
     public void deletePurchase(String idPurchase) throws Exception {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://10.0.0.3:8080/v1/purchases/" + idPurchase))
+                .uri(URI.create("http://localhost:8083/v1/purchases/" + idPurchase))
                 .DELETE()
                 .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
