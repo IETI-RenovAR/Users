@@ -68,7 +68,6 @@ El Servicio de Usuarios es un microservicio desarrollado en Spring Boot que 
 
 ## **Endpoints** 🎯
 
-
 La documentación completa se encuentra en: http://localhost:8080/swagger-ui/index.html
   
 ![image](https://github.com/userEntity-attachments/assets/56e85cec-5b32-48d6-9d12-47bd661801cc)
@@ -118,10 +117,6 @@ El servicio expone los siguientes endpoints (de manera general):
 ## **Pruebas** ✅
 
 El servicio incluye pruebas unitarias para garantizar su correcto funcionamiento. Para ejecutar las pruebas, usa el siguiente comando:
-
-bash
-
-Copy
 
 ```
 mvn test
