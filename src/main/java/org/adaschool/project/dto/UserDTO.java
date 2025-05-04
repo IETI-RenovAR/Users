@@ -1,38 +1,30 @@
 package org.adaschool.project.dto;
 
 public class UserDTO {
-    private final String name;
-    private final String lastName;
+    private final String username;
     private final String email;
     private final String password;
 
     public UserDTO() {
-        this.name = "";
-        this.lastName = "";
+        this.username = "";
         this.email = "";
         this.password = "";
     }
 
-    public UserDTO(String name, String lastName, String email, String password) {
-        this.name = name;
-        this.lastName = lastName;
+    public UserDTO(String username, String email, String password) {
+        this.username = username;
         this.email = email;
         this.password = password;
     }
 
-    public UserDTO(String name, String lastName, String email) {
-        this.name = name;
-        this.lastName = lastName;
+    public UserDTO(String username, String email) {
+        this.username = username;
         this.email = email;
         this.password = "";
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getLastName() {
-        return lastName;
+    public String getUsername() {
+        return username;
     }
 
     public String getEmail() {

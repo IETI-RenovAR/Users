@@ -34,8 +34,8 @@ class UserEntityControllerTest {
 
 	@Test
 	public void testCreateUser() {
-		UserDTO userDTO = new UserDTO("IETI", "PROYECTO", "renovar@eci.com", "remodelaciones");
-		UserEntity createdUserEntity = new UserEntity("1", "IETI", "PROYECTO", "renovar@eci.com", "remodelacionesEncode");
+		UserDTO userDTO = new UserDTO("IETI", "renovar@eci.com", "remodelaciones");
+		UserEntity createdUserEntity = new UserEntity("1", "IETI", "renovar@eci.com", "remodelacionesEncode");
 
 		when(userService.saveUser(any(UserDTO.class))).thenReturn(createdUserEntity);
 
@@ -49,7 +49,7 @@ class UserEntityControllerTest {
 	@Test
 	public void testGetUserById() {
 		String userId = "1";
-		UserEntity userEntity = new UserEntity(userId, "IETI", "PROYECTO", "renovar@eci.com", "remodelacionesEncode");
+		UserEntity userEntity = new UserEntity(userId, "IETI", "renovar@eci.com", "remodelacionesEncode");
 
 		when(userService.getUserById(userId)).thenReturn(userEntity);
 
@@ -72,8 +72,8 @@ class UserEntityControllerTest {
 	@Test
 	public void testUpdateUser() {
 		String userId = "1";
-		UserDTO userDTO = new UserDTO("IETIa", "PROYECTO", "renovarmal@eci.com", "newremodelaciones");
-		UserEntity updatedUserEntity = new UserEntity(userId, "IETIa", "PROYECTO", "renovarmal@eci.com", "remodelacionesEncode");
+		UserDTO userDTO = new UserDTO("IETIa", "renovarmal@eci.com", "newremodelaciones");
+		UserEntity updatedUserEntity = new UserEntity(userId, "IETIa", "renovarmal@eci.com", "remodelacionesEncode");
 
 		when(userService.updateUser(userId, userDTO)).thenReturn(updatedUserEntity);
 
@@ -97,7 +97,7 @@ class UserEntityControllerTest {
 	@Test
 	public void testUpdateUserNotFound() {
 		String userId = "999";
-		UserDTO userDTO = new UserDTO("IETIa", "PROYECTO", "renovarmal@eci.com", "newremodelaciones");
+		UserDTO userDTO = new UserDTO("IETIa", "renovarmal@eci.com", "newremodelaciones");
 
 		when(userService.updateUser(userId, userDTO)).thenThrow(new UserNotFoundException(userId));
 

@@ -14,8 +14,7 @@ public class UserEntity {
 
     @Id
     private String id;
-    private String name;
-    private String lastName;
+    private String username;
     private String email;
     private String password;
     private List<RoleEnum> roles;
@@ -23,10 +22,9 @@ public class UserEntity {
     public UserEntity(){
     }
 
-    public UserEntity(String id, String name, String lastName, String email, String password) {
+    public UserEntity(String id, String username, String email, String password) {
         this.id = id;
-        this.name = name;
-        this.lastName = lastName;
+        this.username = username;
         this.email = email;
         this.roles = new ArrayList<>(Collections.singleton(RoleEnum.USER));
         this.password = new BCryptPasswordEncoder().encode(password);
@@ -34,8 +32,7 @@ public class UserEntity {
 
     public UserEntity(UserDTO userDTO){
         this.id = null;
-        this.name = userDTO.getName();
-        this.lastName = userDTO.getLastName();
+        this.username = userDTO.getUsername();
         this.email = userDTO.getEmail();
         this.roles = new ArrayList<>(Collections.singleton(RoleEnum.USER));
         this.password = new BCryptPasswordEncoder().encode(userDTO.getPassword());
@@ -45,20 +42,12 @@ public class UserEntity {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {
@@ -88,8 +77,7 @@ public class UserEntity {
     }
 
     public void update(UserDTO userDTO){
-        this.name = userDTO.getName();
-        this.lastName = userDTO.getLastName();
+        this.username = userDTO.getUsername();
         this.email = userDTO.getEmail();
         this.password = new BCryptPasswordEncoder().encode(userDTO.getPassword());
     }

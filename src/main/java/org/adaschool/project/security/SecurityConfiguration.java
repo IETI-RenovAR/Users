@@ -53,7 +53,7 @@ public class SecurityConfiguration {
         http.csrf(AbstractHttpConfigurer::disable)
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(authz -> authz
-                        .requestMatchers(HttpMethod.POST, "/v1/auth/public", "/v1/auth").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/v1/auth/public", "/v1/auth", "/v1/users").permitAll()
                         .anyRequest().authenticated())
                 .sessionManagement((sessionManagement) ->
                         sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS)

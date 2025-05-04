@@ -32,14 +32,13 @@ public class UserEntityServiceTest {
     // Crear un usuario y verificar que se guarde correctamente en la base de datos
     @Test
     void testSaveUser() {
-        UserDTO userDTO = new UserDTO("IETI", "PROYECTO", "renovar@eci.com", "remodelaciones");
+        UserDTO userDTO = new UserDTO("IETI", "renovar@eci.com", "remodelaciones");
         UserEntity expectedUserEntity = new UserEntity(userDTO);
         when(userRepository.save(any(UserEntity.class))).thenReturn(expectedUserEntity);
 
         UserEntity savedUserEntity = userService.saveUser(userDTO);
 
-        assertEquals(expectedUserEntity.getName(), savedUserEntity.getName());
-        assertEquals(expectedUserEntity.getLastName(), savedUserEntity.getLastName());
+        assertEquals(expectedUserEntity.getUsername(), savedUserEntity.getUsername());
         assertEquals(expectedUserEntity.getEmail(), savedUserEntity.getEmail());
         verify(userRepository, times(1)).save(any(UserEntity.class));
     }
@@ -48,14 +47,13 @@ public class UserEntityServiceTest {
     @Test
     void testGetUserById() {
         String userId = "12345";
-        UserEntity expectedUserEntity = new UserEntity(userId, "IETI", "PROYECTO", "renovar@eci.com", "remodelaciones");
+        UserEntity expectedUserEntity = new UserEntity(userId, "IETI", "renovar@eci.com", "remodelaciones");
         when(userRepository.findById(userId)).thenReturn(Optional.of(expectedUserEntity));
 
         UserEntity foundUserEntity = userService.getUserById(userId);
 
         assertEquals(expectedUserEntity.getId(), foundUserEntity.getId());
-        assertEquals(expectedUserEntity.getName(), foundUserEntity.getName());
-        assertEquals(expectedUserEntity.getLastName(), foundUserEntity.getLastName());
+        assertEquals(expectedUserEntity.getUsername(), foundUserEntity.getUsername());
         assertEquals(expectedUserEntity.getEmail(), foundUserEntity.getEmail());
         verify(userRepository, times(1)).findById(userId);
     }
@@ -64,7 +62,7 @@ public class UserEntityServiceTest {
     @Test
     void testUpdateUserNotFound() {
         String userId = "12345";
-        UserDTO userDTO = new UserDTO("IETIa", "PROYECTO", "renovar@eci.com", "remodelaciones");
+        UserDTO userDTO = new UserDTO("IETIa", "renovar@eci.com", "remodelaciones");
         when(userRepository.findById(userId)).thenReturn(Optional.empty());
 
         assertThrows(UserNotFoundException.class, () -> {
